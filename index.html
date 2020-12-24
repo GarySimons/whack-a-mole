@@ -92,6 +92,14 @@
       setTimeout(() => timeUp = true, 10000)
   }
 
+  // Function to score when mole is clicked on
+  function bonk(e) {
+      // if the click isnt right, this will run
+      if(!e.isTrusted) return; // cheater
+  }
+
+  // listener for when mole is clicked then to run bonk
+  moles.forEach(mole => mole.addEventListener('click', bonk));
 
 </script>
 </body>
