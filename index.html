@@ -74,12 +74,24 @@
       setTimeout(() => {
           hole.classList.remove('up');
           // if time is NOT up, the run peep funtion
-          if(!timeUp) peep();
+          if (!timeUp) peep();
           // run peep function again
           peep();
       }, time);
-
   }
+
+  // Function to restart game
+  function startGame() {
+      // set score to 0
+      scoreBoard.textContent = 0;
+      // timeUp is false so game will run
+      timeUp = false;
+      // run peep function
+      peep();
+      // after 10 seconds the timeUp will become true and the game will stop
+      setTimeout(() => timeUp = true, 10000)
+  }
+
 
 </script>
 </body>
