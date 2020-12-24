@@ -39,10 +39,26 @@
   const scoreBoard = document.querySelector('.score');
   // select all moles
   const moles = document.querySelectorAll('.mole');
-
-  function randTime(min, max) {
+  // This stops the same hole from being chosen twice in a row
+  let LastHole;
+  
+  // Function to get a random time for mole to show
+  function randomTime(min, max) {
       // Math.round rounds the number 
       return Math.round(Math.random() * (max - min) + min);
+  }
+
+  // Function to choose a random hole
+  function randomHole(holes) {
+      const idx = Math.floor(Math.random() * holes.length);
+      const hole = holes[idx];
+      if (hole === LastHole) {
+          console.log('same as last time!');
+          return randomHole(holes);
+      }
+      LastHole = hole;
+      // return the hole
+      return hole;
   }
 
 </script>
