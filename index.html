@@ -41,6 +41,7 @@
   const moles = document.querySelectorAll('.mole');
   // This stops the same hole from being chosen twice in a row
   let LastHole;
+  last timeUp = false;
   
   // Function to get a random time for mole to show
   function randomTime(min, max) {
@@ -59,6 +60,25 @@
       LastHole = hole;
       // return the hole
       return hole;
+  }
+
+  // Function to pop up mole
+  function peep() {
+      // random time in milliseconds
+      const time = randomTime(200, 1000);
+      // random hole
+      const hole = randomHole(holes);
+      // class to activate the CSS of 'up' to show mole
+      hole.classList.add('up');
+      // after random time, remove up class
+      setTimeout(() => {
+          hole.classList.remove('up');
+          // if time is NOT up, the run peep funtion
+          if(!timeUp) peep();
+          // run peep function again
+          peep();
+      }, time);
+
   }
 
 </script>
