@@ -33,9 +33,17 @@
   </div>
 
 <script>
+  // select all holes
   const holes = document.querySelectorAll('.hole');
+  // select all scores
   const scoreBoard = document.querySelector('.score');
+  // select all moles
   const moles = document.querySelectorAll('.mole');
+
+  function randTime(min, max) {
+      // Math.round rounds the number 
+      return Math.round(Math.random() * (max - min) + min);
+  }
 
 </script>
 </body>
