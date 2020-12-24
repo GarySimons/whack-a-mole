@@ -41,7 +41,11 @@
   const moles = document.querySelectorAll('.mole');
   // This stops the same hole from being chosen twice in a row
   let LastHole;
-  last timeUp = false;
+  // runs game if false, ends game if true
+  let timeUp = false;
+  // Score
+  let score = 0;
+
   
   // Function to get a random time for mole to show
   function randomTime(min, max) {
@@ -86,6 +90,8 @@
       scoreBoard.textContent = 0;
       // timeUp is false so game will run
       timeUp = false;
+      // score to 0
+      score = 0;
       // run peep function
       peep();
       // after 10 seconds the timeUp will become true and the game will stop
@@ -96,10 +102,16 @@
   function bonk(e) {
       // if the click isnt right, this will run
       if(!e.isTrusted) return; // cheater
+      // adds up score
+      score++;
+      // if hit remove up class
+      this.classList.remove('up');
   }
 
   // listener for when mole is clicked then to run bonk
   moles.forEach(mole => mole.addEventListener('click', bonk));
+  // change score
+  scoreBoard.textContent = score;
 
 </script>
 </body>
